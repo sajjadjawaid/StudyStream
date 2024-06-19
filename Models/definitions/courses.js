@@ -9,23 +9,28 @@ class courses extends Model {
 courses.init({
     courseID: {
         primaryKey: true,
-        type: DataTypes.STRING(255)
+        type: DataTypes.INTEGER,
+        autoIncrement: true
     },
-    courseName: {
+
+    courseCode: {
         unique: true,
         allowNull: false,
         type: DataTypes.STRING(255)
         
     },
-    Description: {
+     courseName: {
+        unique: true,
+        allowNull: false,
+        type: DataTypes.STRING(255)
+        
+    },
+    description: {
         type: DataTypes.TEXT,
         allowNull: false
     },
-    Instructor: {
-        type: DataTypes.STRING(255),
-        allowNull: false
-    },
-    Credit: {
+    
+    credit: {
         type: DataTypes.INTEGER,
         allowNull: false,
         defaultValue: 3

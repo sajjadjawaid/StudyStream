@@ -9,7 +9,8 @@ class instructors extends Model {
 instructors.init({
     instructorID : {
         primaryKey: true,
-        type: DataTypes.STRING(255)
+        type: DataTypes.INTEGER,
+        autoIncrement: true
     },
 
     name: {

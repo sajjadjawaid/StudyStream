@@ -9,7 +9,8 @@ class students extends Model {
 students.init({
     studentID: {
         primaryKey: true,
-        type: DataTypes.STRING(255)
+        type: DataTypes.INTEGER,
+        autoIncrement: true
         },
     name: {
         allowNull: false,

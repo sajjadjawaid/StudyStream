@@ -9,7 +9,8 @@ var logger = require('morgan');
 
 //courses
 var coursesRouter = require('./routes/coursesRoute');
-
+//instructor
+var instructorRouter = require('./routes/instructorRoute');
 
 var app = express();
 
@@ -24,6 +25,7 @@ app.use(cookieParser());
 // app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/courses', coursesRouter);
+app.use('/instructors', instructorRouter);
 
 // app.use('/', indexRouter);
 // app.use('/users', usersRouter);

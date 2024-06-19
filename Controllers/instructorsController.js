@@ -33,5 +33,28 @@ module.exports = {
        }
     
 
+    },
+
+    getAllInstructor: async (req, res) =>{
+        try{
+            
+            const user = await instructorService.getAllInstructor();
+            if(user.error){
+                return res.send({
+                    error: user.error
+                })
+            }
+            return res.send({
+                
+                    message: "All Instructors: ",
+                    response: user.response
+                
+            })
+           } catch(error){
+            return res.send({
+                error: error
+            })
+    
+           }
     }
 }

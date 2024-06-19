@@ -20,5 +20,29 @@ module.exports = {
                 }
 
             }
-    } 
+    },
+
+    getAllInstructors: async () =>{
+        try{
+            const user = await models.instructors.findAll({
+                attributes: {
+                    exclude: ["deletedAt", "createdAt", "updatedAt"]
+                }
+            })
+            if(user.error){
+             return {
+                 error: user.error
+             }
+            }
+            return {
+             response: user
+            }
+ 
+             }catch(error){
+                 return{
+                     error: error
+                 }
+ 
+             }
+    }
 }

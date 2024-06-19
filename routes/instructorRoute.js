@@ -1,6 +1,7 @@
 const route = require("express").Router();
-const {validateAndCreate} = require('../Controllers/instructorsController');
+const {validateAndCreate, getAllInstructor} = require('../Controllers/instructorsController');
 
 route.post('/createInstructor', validateAndCreate );
+route.get('/getAll', getAllInstructor);
 
 module.exports = route;

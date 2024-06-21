@@ -4,25 +4,34 @@ const joi = require("joi");
 
 const createCoursesSchema = joi.object().keys({
     courseName : joi.string().alphanum().required(),
-    courseCode: joi.string().alphanum().required(),
-    desciption: joi.string().required(),
+    courseCode: joi.string().pattern(/^[a-zA-Z0-9\-]+$/).required(),
+    description: joi.string().required(),
     credit: joi.string().required(),
+    instructorID: joi.string().required()
 
 
 })
 
 module.exports = {
-    toCheck : async (req, res) =>{
+    validateAndCreate : async (req, res) =>{
        try{
         const validation = await createCoursesSchema.validateAsync(req.body);
+        const user = await coursesService.validateAndCreate(validation);
+        if(user.error){
+            return res.send({
+                error: user.error
+            })
+        }
         return res.send({
-            response: validation
+            response: user.response
         })
-       } catch(error){
-        return res.send({
-            error: error
-        })
+        
+       
 
+       } catch(error){
+             return res.send({
+                error: error
+             })
        }
     
 

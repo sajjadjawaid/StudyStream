@@ -2,9 +2,9 @@
 const coursesModel = require('../Models/coursesModel');
 
 module.exports = {
-    toCheck : () =>{
+    validateAndCreate : async (body) =>{
         try{
-       const user = coursesModel.toCheck();
+       const user = coursesModel.validateAndCreate(body);
        if(user.error){
         return {
             error: user.error

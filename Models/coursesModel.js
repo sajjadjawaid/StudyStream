@@ -1,8 +1,8 @@
-
+const {models} = require('./index')
 module.exports = {
-    toCheck : () =>{
+    validateAndCreate : async (body) =>{
         try{
-            const user = new Date();
+            const user = await models.courses.create({...body});
             if(user.error){
                 return {
                     error: user.error

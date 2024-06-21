@@ -1,7 +1,7 @@
 const route = require("express").Router();
 
-const {toCheck} = require('../Controllers/coursesController');
+const {validateAndCreate} = require('../Controllers/coursesController');
 
-route.get('/toCheck', toCheck);
+route.post('/create', validateAndCreate)
 
 module.exports = route;

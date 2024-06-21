@@ -28,8 +28,7 @@ courses.init({
     description: {
         type: DataTypes.TEXT,
         allowNull: false
-    },
-    
+    },    
     credit: {
         type: DataTypes.INTEGER,
         allowNull: false,

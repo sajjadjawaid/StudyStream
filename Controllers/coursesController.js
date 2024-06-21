@@ -3,7 +3,7 @@ const coursesService = require('../Services/coursesService');
 const joi = require("joi");
 
 const createCoursesSchema = joi.object().keys({
-    courseName : joi.string().alphanum().required(),
+    courseName : joi.string().required(),
     courseCode: joi.string().pattern(/^[a-zA-Z0-9\-]+$/).required(),
     description: joi.string().required(),
     credit: joi.string().required(),

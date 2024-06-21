@@ -28,9 +28,9 @@ students.init({
         type: DataTypes.STRING(255)
     },
     courseID: {
-        type: DataTypes.STRING(255),
+        type: DataTypes.INTEGER,
         allowNull: false,
-        unique: true,
+        
         references: {
             model: courses,
             key: "courseID"

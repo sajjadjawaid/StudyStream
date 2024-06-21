@@ -35,8 +35,8 @@ courses.init({
         defaultValue: 3
     },
     instructorID:{
-        type: DataTypes.STRING(255),
-        unique: true,
+        type: DataTypes.INTEGER,
+        
         allowNull: false,
         references: {
             model: instructors,

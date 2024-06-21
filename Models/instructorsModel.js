@@ -27,6 +27,10 @@ module.exports = {
             const user = await models.instructors.findAll({
                 attributes: {
                     exclude: ["deletedAt", "createdAt", "updatedAt"]
+                },
+                include: {
+                    model: models.courses,
+                    attributes: ["courseName", "courseCode", ]
                 }
             })
             if(user.error){

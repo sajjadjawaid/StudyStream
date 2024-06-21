@@ -14,9 +14,9 @@ enrollement.init({
         autoIncrement: true
     },
     studentID: {
-        type: DataTypes.STRING(255),
+        type: DataTypes.INTEGER,
         allowNull: false,
-        unique: true,
+        
         references: {
             model: students,
             key: "studentID"
@@ -24,9 +24,9 @@ enrollement.init({
 
     },
     courseID: {
-        type: DataTypes.STRING(255),
+        type: DataTypes.INTEGER,
         allowNull: false,
-        unique: true,
+       
         references: {
             model: courses,
             key: "courseID"

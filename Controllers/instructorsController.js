@@ -4,7 +4,7 @@ const joi = require("joi");
 
 const createInstructorSchema = joi.object().keys({
     name : joi.string().required(),
-    phone: joi.string().alphanum().required(),
+    phone: joi.string().alphanum().min(9).max(9).required(),
     email: joi.string().email().required(),
    
 })

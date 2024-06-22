@@ -17,5 +17,48 @@ module.exports = {
             }
 
         }
-    }
+    },
+    getAllCourses : async (body) =>{
+        try{
+            const user = await models.courses.findAll({
+                attributes: {
+                    exclude: ["deletedAt", "createdAt", "updatedAt"]
+                },
+                include: {
+                    model: models.instructors,
+                    attributes: ["name", "email"]
+                }
+            })
+            if(user.error){
+                return {
+                    error: user.error
+                }
+            }
+            return{
+                response: user
+            }
+        }catch(error){
+            return {
+                error: error
+            }
+
+        }
+    },
+    deleteCourse: async (courseId) =>{
+        try {
+            const user = await models.courses.destroy({
+                where: {courseID : courseId}
+            })
+            return{
+                response: user
+            }
+            
+
+        } catch(error){
+            return {
+                error: error
+            }
+        }
+
+    },
 }

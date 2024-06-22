@@ -12,6 +12,10 @@ const createCoursesSchema = joi.object().keys({
 
 })
 
+const deleteCourseSchema = joi.object().keys({
+    courseId: joi.string().required()
+})
+
 module.exports = {
     validateAndCreate : async (req, res) =>{
        try{ 
@@ -35,5 +39,48 @@ module.exports = {
        }
     
 
-    }
+    },
+    getAllCourses: async (req, res) =>{
+        try{
+            const user = await coursesService.getAllCourses();
+            if(user.error){
+                return res.send({
+                    error: user.error
+                })
+            }
+            return res.send({
+                response: {
+                    message: "All Courses: ",
+                    response: user.response
+                }
+            })
+
+        }catch(error){
+            return res.send({
+                error: error
+            })
+        }
+    },
+    deleteCourse: async (req, res) =>{
+        try{
+            const validate = await deleteCourseSchema.validateAsync(req.query)
+            const user = await coursesService.deleteCourse(validate.courseId);
+            if(user.error){
+                return res.send({
+                    error: user.error
+                })
+            }
+            return res.send({
+                response: {
+                    
+                    response: user.response
+                }
+            })
+
+        }catch(error){
+            return res.send({
+                error: error
+            })
+        }
+    },
 }

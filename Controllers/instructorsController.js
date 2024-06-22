@@ -9,7 +9,7 @@ const createInstructorSchema = joi.object().keys({
    
 })
 
-const deleteUserSchema = joi.object().keys({
+const deleteInstructorSchema = joi.object().keys({
     instructorId: joi.string().required()
 })
 
@@ -73,7 +73,7 @@ module.exports = {
     },
     deleteInstructor: async (req, res) =>{ 
         try { 
-            const validate = await deleteUserSchema.validateAsync(req.query);
+            const validate = await deleteInstructorSchema.validateAsync(req.query);
             const user = await instructorService.deleteInstructor(validate.instructorId);
             if(user.error){
                 return res.send({

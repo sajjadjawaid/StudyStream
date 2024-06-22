@@ -14,7 +14,7 @@ const createCoursesSchema = joi.object().keys({
 
 module.exports = {
     validateAndCreate : async (req, res) =>{
-       try{
+       try{ 
         const validation = await createCoursesSchema.validateAsync(req.body);
         const user = await coursesService.validateAndCreate(validation);
         if(user.error){

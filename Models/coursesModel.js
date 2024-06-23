@@ -61,4 +61,30 @@ module.exports = {
         }
 
     },
+    updateCourse: async (courseId, body) =>{
+        try {
+            
+            const [NumberofaffectedRows, updateRows] = await models.courses.update(body, {
+                where: { courseID: courseId },
+                returning: true // include this we want the whole rows which includes changed and unchanged
+            });
+            console.log("in model: ", updateRows) 
+            if (NumberofaffectedRows === 0) {
+                return {
+                    error: "No rows updated"
+                };
+            }
+            console.log("number of rows: ",NumberofaffectedRows );
+            return {
+                response: updateRows
+            };
+            
+
+        } catch(error){
+            return {
+                error: error
+            }
+        }
+
+    }
 }

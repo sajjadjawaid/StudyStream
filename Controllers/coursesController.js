@@ -16,6 +16,17 @@ const deleteCourseSchema = joi.object().keys({
     courseId: joi.string().required()
 })
 
+const updateCourseSchema = joi.array().items(
+    joi.object().keys({
+        courseId: joi.string().required(),
+        courseCode : joi.string().optional(),
+        courseName: joi.string().alphanum().min(9).max(9).optional(),
+        description: joi.string().optional(),
+        credit: joi.string().optional(),
+        instructorId: joi.string().optional()
+    })
+) 
+
 module.exports = {
     validateAndCreate : async (req, res) =>{
        try{ 
@@ -82,5 +93,22 @@ module.exports = {
                 error: error
             })
         }
+    },
+    updateCourse: async (req, res) =>{ 
+        try { 
+            const validate = await updateCourseSchema.validateAsync(req.body);
+            const user = await coursesService.updateCourse(validate);
+            
+            console.log("in controller ", user)
+            return res.send({
+                response: user
+            })
+
+        } catch(error){
+            return res.send({
+                error: error
+            })
+        }
+
     },
 }

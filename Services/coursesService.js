@@ -65,4 +65,29 @@ module.exports = {
         }
 
     },
+    updateCourse: async (body) =>{
+        try {
+        
+        const results = [];
+        for (const course of body) {
+            const { courseId, ...body } = course;
+            const user = await coursesModel.updateCourse(courseId, body);
+            if (user.error) {
+                results.push({ courseId, error: user.error });
+            } else {
+                results.push({ courseId, response: user.response });
+            }
+        }
+        console.log("in service: ", results);
+        return results;
+            
+            
+
+        } catch(error){
+            return {
+                error: error
+            }
+        }
+
+    },
 }

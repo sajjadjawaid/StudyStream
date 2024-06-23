@@ -40,7 +40,7 @@ db.sequelize
   console.log("error message: ", error.message)
 })
 
-//for deleting existing table
+// for deleting existing table
 // db.sequelize.sync({ force: true }).then(() => {
 //   console.log('Database & tables created!');
   

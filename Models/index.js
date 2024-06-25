@@ -10,8 +10,10 @@ const models = {courses, students, instructors, enrollement};
 instructors.hasMany(courses, {foreignKey: "instructorID"});
 courses.belongsTo(instructors, {foreignKey: "instructorID"});
 
-courses.belongsToMany(students, {through: enrollement, foreignKey: "courseID"});
-students.belongsToMany(courses, {through: enrollement, foreignKey: "studentID"});
+courses.hasMany(enrollement, { foreignKey: "courseID"});
+enrollement.belongsTo(courses, {foreignKey: "courseID"});
+students.hasMany(enrollement,{foreignKey: "studentID"});
+students.belongsTo(enrollement, { foreignKey: "studentID"});
 
 
 const db = {};

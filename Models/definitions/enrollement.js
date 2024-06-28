@@ -39,7 +39,13 @@ enrollement.init({
     timestamps: true,
     paranoid: true,
     tableName: "enrollement",
-    sequelize
+    sequelize,
+    uniqueKeys: {
+        unique_enrollment: {
+            fields: ['studentID', 'courseID']
+        }
+    }
+
 
 
 

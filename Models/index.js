@@ -13,7 +13,7 @@ courses.belongsTo(instructors, {foreignKey: "instructorID"});
 courses.hasMany(enrollement, { foreignKey: "courseID"});
 enrollement.belongsTo(courses, {foreignKey: "courseID"});
 students.hasMany(enrollement,{foreignKey: "studentID"});
-students.belongsTo(enrollement, { foreignKey: "studentID"});
+enrollement.belongsTo(students, { foreignKey: "studentID"});
 
 
 const db = {};
